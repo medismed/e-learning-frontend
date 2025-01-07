@@ -1,0 +1,64 @@
+<div class="main-profile">
+    <!-- Left Section: User Information -->
+    <div class="infos">
+      <h2>Contact Info</h2>
+      <div class="infos-item">
+        <div class="icon-and-value">
+          <img src="https://static.xx.fbcdn.net/rsrc.php/v4/ys/r/m4BFWssaTF6.png?_nc_eui2=AeGlDRBOALdQ7GrDzF74pCpdpXHlgstauK2lceWCy1q4rb1UB8N98XyaHJ2iIQ1EC7EyRWykIGPSzhp1IXkDGuZ1" alt="First Name Icon" class="info-icon" />
+          <span>{{ user.firstname }}</span>
+        </div>
+        <div class="info-label"><small>First name</small></div>
+      </div>
+      <div class="infos-item">
+        <div class="icon-and-value">
+          <img src="https://static.xx.fbcdn.net/rsrc.php/v4/ys/r/m4BFWssaTF6.png?_nc_eui2=AeGlDRBOALdQ7GrDzF74pCpdpXHlgstauK2lceWCy1q4rb1UB8N98XyaHJ2iIQ1EC7EyRWykIGPSzhp1IXkDGuZ1" alt="Last Name Icon" class="info-icon" />
+          <span>{{ user.lastname }}</span>
+        </div>
+        <div class="info-label"><small>Last Name</small></div>
+      </div>
+      <div class="infos-item">
+        <div class="icon-and-value">
+          <img src="https://static.xx.fbcdn.net/rsrc.php/v4/yk/r/DWdJtZ5f6Hv.png?_nc_eui2=AeG5IDmRNn9wm2MWc5rdsDjIn9ZGZXx34TCf1kZlfHfhMHZYQaH4jPYcAJexWe_-4Y7v3fa9H1ZSDEgovygiRf25" alt="Phone Icon" class="info-icon" />
+          <span>{{ user.phone }}</span>
+        </div>
+        <div class="info-label"><small>Phone</small></div>
+      </div>
+      <div class="infos-item">
+        <div class="icon-and-value">
+          <img src="https://static.xx.fbcdn.net/rsrc.php/v4/yR/r/Sf42JMhxQvh.png?_nc_eui2=AeHn_vYNGqI-OwhjaEJkGqZlp5-tbN7TiGinn61s3tOIaBUqT0fEYfwZHe9n3ixGYYmxc8sHzCvPn_GyDjy4_Rjt" alt="Address Icon" class="info-icon" />
+          <span>{{ user.address }}</span>
+        </div>
+        <div class="info-label"><small>Address</small></div>
+      </div>
+      <div class="infos-item">
+        <div class="icon-and-value">
+          <img src="https://static.xx.fbcdn.net/rsrc.php/v4/yK/r/1qxBFnuv4y1.png?_nc_eui2=AeGBa8vgonjtDu3x3HOxBvuWKnxvNkMSHpIqfG82QxIeknfWHvj5bo9i_2N-ZuVSGa5CrLPgwatv1cyP5AUtApYO" alt="Email Icon" class="info-icon" />
+          <span>{{ user.email }}</span>
+        </div>
+        <div class="info-label"><small>Email</small></div>
+      </div>
+      <div class="infos-item">
+        <div class="icon-and-value">
+          <img src="https://static.xx.fbcdn.net/rsrc.php/v4/y1/r/7NhZ2e27k6l.png?_nc_eui2=AeF3MX9Z2ogJc6YkENwzR47imtg63f1Ffaua2Drd_UV9q1x601y7JClzJCBsWlmHqGx_6Icr7Dcnjvk6zuEhPGyn" alt="LinkedIn Icon" class="info-icon" />
+          <span>{{ user.linkdin }}</span>
+        </div>
+        <div class="info-label"><small>LinkedIn</small></div>
+      </div>
+  
+      <button class="edit-button" (click)="editAll()">Edit Info</button>
+    </div>
+  
+    <!-- Right Section: Profile Picture -->
+    <!-- <div class="image-container">
+      <img [src]="user.image || 'assets/images/default-profile.png'" alt="User Profile Picture" />
+      <button class="edit-image-button" (click)="editImage()">Edit Image</button>
+    </div> -->
+    <div class="image-container">
+      <img [src]="user.image || 'assets/images/default-profile.png'" alt="User Profile Picture" />
+      <button class="edit-image-button" (click)="triggerFileInput()">Edit Image</button>
+      <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none" />
+    </div>
+    
+  
+  </div>
+  

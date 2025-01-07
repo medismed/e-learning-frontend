@@ -1,0 +1,25 @@
+<div *ngIf="(users$ | async) as users; else loading" class="user-list">
+    <div *ngIf="users.length > 0; else noUsers">
+      <div *ngFor="let user of users" class="user-item">
+        <!-- Left: User Avatar -->
+        <div class="user-avatar">
+          <img src="assets/images/anonyme.png" alt="User Avatar" class="avatar-icon" />
+        </div>
+  
+        <!-- Middle: User Info -->
+        <div class="user-info">
+          <h3>{{ user.firstname }} {{ user.lastname }}</h3>
+          <p>{{ user.email }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #loading>
+    <p>Loading users...</p>
+  </ng-template>
+  
+  <ng-template #noUsers>
+    <p>No users available.</p>
+  </ng-template>
+  
