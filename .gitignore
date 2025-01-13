@@ -6,6 +6,9 @@
 /out-tsc
 /bazel-out
 
+# Ignore the images folder inside the public folder
+public/images/
+
 # Node
 /node_modules
 npm-debug.log
