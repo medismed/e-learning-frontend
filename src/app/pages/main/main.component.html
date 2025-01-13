@@ -1,9 +1,9 @@
-<div class="main-container">
+<div class="main-container" style="background-color:white;">
   <!-- Header (Navigation Bar) -->
   <header class="header">
     <div class="logo">
       <img src="/images/logo.png" alt="Career Center Logo" style="width: 300px;" />
-      <h1>Career Center</h1>
+      <h1>Learning Center</h1>
     </div>
     <div class="header-actions">
       <button>
@@ -12,7 +12,7 @@
       <button>
         <img src="/images/editing.png" alt="Settings Icon" style="width: 25px;" />
       </button>
-      <button>
+      <button (click)="logout()">
         <img src="/images/log-out.png" alt="Logout Icon" style="width: 25px;" />
       </button>
     </div>
@@ -23,14 +23,23 @@
     <aside class="sidebar">
       <ul>
         <li *ngFor="let item of getNavItems()" (click)="navigateTo(item.route)">
-          <img [src]="item.icon" [alt]="item.label + ' Icon'" />
+          <img [src]="item.icon" [alt]="item.label + ' Icon'"  style="width: 30px;height: 30px;"/>
           {{ item.label }}
         </li>
-        <li>
-          <img src="/images/role.png" alt="Role Icon" />
-          Role: {{ role }} <!-- Display the role in the navbar -->
-        </li>
       </ul>
+    
+      <!-- User Section -->
+      <div class="user-section">
+        <img
+          [src]="currentUser?.image || '/images/default-user.png'"
+          alt="User Image"
+          class="user-image"
+        />
+        <div class="user-details">
+          <p class="user-lastname">{{ currentUser?.lastname || 'Last Name' }}</p>
+          <p class="user-role">{{ currentUser?.role || 'Role' }}</p>
+        </div>
+      </div>
     </aside>
 
     <!-- Main Content -->

@@ -3,11 +3,11 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: white;
+
 }
 
 .header {
-  background-color: #4c566a;
+  background-color: #329f5e;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -41,24 +41,22 @@
   display: flex;
   flex: 1;
   margin-right: 10px;
+  
 }
 
 .sidebar {
   width: 250px;
-  background-color: #2e3440;
-  /* background-color: #eceff4; */
-
+  background-color: whitesmoke;
   margin-left: 10px;
-  /* color:#4c566a; */
-  color: white;
+  color: 4D4D4D;
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  height: 300px; /* Keep the existing height */
+  height: 90%;
   border-radius: 10px;
-  position: sticky; /* Make the sidebar sticky */
-  top: calc(84px + 38px); /* Adjust top to include the navbar height + 10px gap */
-  border-right: 2px solid white;
+  position: sticky; 
+  top: calc(84px + 38px); 
+  margin-left: 10px;
 }
 
 .sidebar ul {
@@ -77,9 +75,8 @@
 }
 
 .sidebar li:hover {
-  background-color: #434c5e;
+  background-color: lightgreen;
   border-radius: 5px;
-  /* padding: 0.5rem; */
   color: white;
 }
 
@@ -91,9 +88,52 @@
 /* Main content area */
 .content-area {
   flex: 1;
-  background-color: #eceff4;
+  background-color: whitesmoke;
   padding: 1rem;
   /* background-color: #434c5e; */
   margin-left: 10px;
   border-radius: 14px;
+  height: 74vh;
+
+}
+
+
+
+/* User Section at the Bottom of Sidebar */
+.user-section {
+  margin-top: auto; 
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between image and text */
+  /* padding: 15px 10px; */
+  border-top: 2px solid #434c5e; /* Separator line */
+  height: 50px;
+
+}
+
+.user-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; 
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column; /* Stack lastname and role vertically */
+  /* background-color: red;  */
+}
+
+.user-lastname {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: 4D4D4D;
+  margin-bottom: 2px; /* Reduce the spacing between lastname and role */
+}
+
+.user-role {
+  font-size: 0.8rem;
+  color: #7f7f7f; /* Subtle gray for the role text */
+  margin-top: 0; /* Ensure no extra spacing above the role */
 }

@@ -1,25 +1,68 @@
-<div *ngIf="(users$ | async) as users; else loading" class="user-list">
-    <div *ngIf="users.length > 0; else noUsers">
-      <div *ngFor="let user of users" class="user-item">
-        <!-- Left: User Avatar -->
-        <div class="user-avatar">
-          <img src="assets/images/anonyme.png" alt="User Avatar" class="avatar-icon" />
-        </div>
-  
-        <!-- Middle: User Info -->
-        <div class="user-info">
-          <h3>{{ user.firstname }} {{ user.lastname }}</h3>
-          <p>{{ user.email }}</p>
+<div class="content-container">
+  <!-- Users Section -->
+  <div class="user-list">
+    <!-- Title Section (Now Outside the Scrollable List) -->
+    <div class="user-title sticky-title">
+      <!-- <h1>My Community</h1> -->
+      <img src="/images/workgroup.png" alt="" style="width: 50px; height: 50px;">
+    </div>
+
+    <!-- Scrollable User List -->
+    <div *ngIf="(users$ | async) as users; else loading" class="user-items">
+      <div *ngIf="users.length > 0; else noUsers">
+        <div *ngFor="let user of users" class="user-item">
+          <!-- Left: User Avatar -->
+          <div class="user-avatar">
+            <!-- <img [src]="user.image || 'assets/images/default-profile.png'" alt="User Profile Picture" class="avatar-icon" /> -->
+            <img 
+            [src]="'http://localhost:9103/upload/get-image?link=' + (user.image || 'assets/images/default-profile.png')" 
+            alt="User Profile Picture" 
+            class="avatar-icon" 
+          />
+          </div>
+
+          <!-- Middle: User Info -->
+          <div class="user-info">
+            <h3>{{ user.firstname }} {{ user.lastname }}</h3>
+            <p>
+              <img src="https://static.xx.fbcdn.net/rsrc.php/v4/yK/r/1qxBFnuv4y1.png?_nc_eui2=AeGBa8vgonjtDu3x3HOxBvuWKnxvNkMSHpIqfG82QxIeknfWHvj5bo9i_2N-ZuVSGa5CrLPgwatv1cyP5AUtApYO" style="width: 20x; height: 20px;" alt="">
+              {{ user.email }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
   
+  <!-- Image Section -->
+  <div class="image-section">
+    <!-- Main Image -->
+    <img
+      src="https://emsi.ma/wp-content/uploads/2020/07/MMPT5309-scaled.jpg"
+      alt="Main Info"
+      class="main-image"
+    />
+
+    <!-- Horizontal Carousel -->
+    <div class="horizontal-carousel">
+      <div class="carousel-item" *ngFor="let image of [
+        'https://scontent.frba3-1.fna.fbcdn.net/v/t39.30808-6/473577300_1055047780000033_1583561255097788649_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_aid=0&_nc_ohc=bh6bjQHTvZIQ7kNvgGoe3MD&_nc_zt=23&_nc_ht=scontent.frba3-1.fna&_nc_gid=A94TrtXuunvXhArvwek-ISB&oh=00_AYDBe-Vd_CfN-RFs2Fm--atk-g0XPU4cGtMsAEblDce6LA&oe=678B2D9F',
+        'https://scontent.frba3-2.fna.fbcdn.net/v/t39.30808-6/473169317_1052164623621682_2949352740888260071_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=UYskPmxNCO8Q7kNvgHeVnhF&_nc_zt=23&_nc_ht=scontent.frba3-2.fna&_nc_gid=As870KbudYtHI_A-UYQ1t_m&oh=00_AYD6YJjd0ae9kxE8_al-P5av2h_o49H19viT5P5Kwem2xQ&oe=678B2B5E',
+        'https://scontent.frba3-1.fna.fbcdn.net/v/t39.30808-6/472705206_1050585293779615_6191589387005574064_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=BC5gJa9THz4Q7kNvgFUsbjI&_nc_zt=23&_nc_ht=scontent.frba3-1.fna&_nc_gid=Aqc0UuaCw-qWhThiEjW-3Ag&oh=00_AYA2D0BfmZv0CIP7NCytgXYqmulCWN12zeak18Kt3H0PlQ&oe=678B2BFB',
+        'https://scontent.frba3-2.fna.fbcdn.net/v/t39.30808-6/472621525_1050585177112960_5389959132634812391_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=EZ9VCUR6Np8Q7kNvgEVO4bX&_nc_zt=23&_nc_ht=scontent.frba3-2.fna&_nc_gid=AZjCLA5fT-pWF0_9krV0I1D&oh=00_AYCJFNE_5n6OLFmCvxAdOR8YryvK1ZWOFo_mOpKPJQHZ0g&oe=678B2D75',
+        'https://scontent.frba3-2.fna.fbcdn.net/v/t39.30808-6/472549504_1050585167112961_4706767657918058010_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=yr8I49hd-80Q7kNvgFzb0fr&_nc_zt=23&_nc_ht=scontent.frba3-2.fna&_nc_gid=AHvKWAlcX_AZR5PMd3gmg0y&oh=00_AYCcXnvJiIbzAVqDgu0hqRJuAbyKS8rzLLkcYAWKTn0hjQ&oe=678B3776'
+
+      ]">
+        <img [src]="image" alt="Carousel Image" />
+      </div>
+    </div>
+  </div>
+
   <ng-template #loading>
     <p>Loading users...</p>
   </ng-template>
-  
+
   <ng-template #noUsers>
     <p>No users available.</p>
   </ng-template>
-  
+</div>

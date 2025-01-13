@@ -23,8 +23,8 @@ export class LoginComponent {
 
     try {
       const reponse = await axios.post('http://localhost:9103/auth/login', {
-        email: 'user0@gmail.com',
-        password: '1234',
+        email: this.email,
+        password: this.password,
       });
       console.log('the response is : ', reponse.data);
       if (reponse.status == 200){

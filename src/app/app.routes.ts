@@ -9,7 +9,6 @@ import { NewsComponent } from './pages/news/news.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PostComponent } from './pages/post/post.component';
 
-
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -18,14 +17,13 @@ export const routes: Routes = [
     path: 'main',
     component: MainComponent,
     children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirect to HomeComponent
       { path: 'courses', component: CoursesComponent },
       { path: 'community', component: CommunityComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'news', component: NewsComponent },
       { path: 'home', component: HomeComponent },
-      { path: 'post', component: PostComponent }, // Add the PostComponent here
-
-
+      { path: 'post', component: PostComponent }, // PostComponent remains here
     ],
   },
 ];

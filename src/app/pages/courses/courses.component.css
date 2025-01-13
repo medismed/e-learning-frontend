@@ -1,10 +1,16 @@
+.course-container {
+  max-height: 70vh;
+  overflow-y: auto; /* Enable scrolling */
+  padding-right: 0.5rem; /* Add padding for better alignment */
+  margin-right: 1rem; /* Adjust spacing with other elements */
+}
+
 .course-list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
   border-radius: 8px;
-  /* background-color: red; */
 }
 
 .course-item {
@@ -12,11 +18,11 @@
   align-items: center; /* Align items horizontally */
   justify-content: space-between;
   padding: 1rem;
-  background-color: #4C566A;
+  /* background-color: #4c566a; */
   border-radius: 14px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: auto; /* Allow height to adjust automatically */
   margin-top: 5px;
+  height: 100px;
 }
 
 .teacher-details {
@@ -25,49 +31,45 @@
   align-items: center;
   width: 100px;
   margin-right: 30px;
-  /* background-color: #2e3440; */
   padding: 5px;
   border-radius: 5px;
 }
 
-.teacher-icon {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background-color: white;
-  margin-bottom: 0.5rem;
+.teacher-details img {
+  width: 80px;
+  height: 80px;
+  padding: 10px;
+  border-right: 1px solid black;
 }
 
-.teacher-name {
-  font-size: 0.9rem;
-  text-align: center;
-  color: #f0f0f0;
-}
-
-/* Middle Section: Course Info */
 .course-info {
   flex: 1;
-  display: flex; /* Make it a flex container */
-  flex-direction: column; /* Keep items in a vertical stack */
-  justify-content: center; /* Center items vertically */
-  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align items to the top */
+  /* margin-left: 1rem; */
   margin-right: 1rem;
-  background-color: #4C5669;
+  /* background-color: #64728b; */
   padding: 0.5rem;
   border-radius: 10px;
-  box-shadow: 10 12 12 white;
 }
 
 .course-info h3 {
   margin: 0;
   font-size: 1.2rem;
-  color: #8FBCBB;
+  color: #8fbcbb;
 }
 
 .course-info p {
-  margin: 0.2rem 0; /* Reduce spacing between lines */
+  margin: 0.2rem 0;
   font-size: 0.9rem;
-  color: #A2BD8C;
+  color: black;
+}
+
+.course-info small {
+  margin-top: 0.5rem; /* Add spacing between description and published by text */
+  font-size: 0.8rem;
+  color: #ffffff; /* Keep the text white */
 }
 
 .course-actions {

@@ -12,34 +12,39 @@ import { CommonModule } from '@angular/common';
 })
 export class MainComponent implements OnInit {
   role: string = '';
+  currentUser: { image: string; lastname: string; role: string } | null = null;
 
   constructor(private router: Router, public userService: UserService) {}
 
   ngOnInit(): void {
     const user = this.userService.getUserInfo();
     this.role = user?.role || '';
-    console.log('User info:', user);
+    this.currentUser = user
+      ? { image: user.image || '/images/default-user.png', lastname: user.lastname, role: user.role }
+      : null;
+    console.log('User info:', this.currentUser);
   }
 
   navigateTo(route: string) {
-    this.router.navigate(['/main', route]); // Navigate to child route
+    this.router.navigate(['/main', route]);
   }
 
-  /**
-   * Generate navigation items based on the user's role.
-   */
+  logout() {
+    this.userService.setUserInfo(null); // Clear the shared user object
+    this.router.navigate(['/login']); // Redirect to login page
+  }
+
   getNavItems(): { label: string; route: string; icon: string }[] {
     const navItems = [
       { label: 'Home', route: 'home', icon: 'images/home.png' },
       { label: 'Courses', route: 'courses', icon: '/images/courses.png' },
-      { label: 'Community', route: 'community', icon: '/images/community.png' },
-      { label: 'Profile', route: 'profile', icon: '/images/profile.png' },
+      { label: 'Community', route: 'community', icon: '/images/workgroup.png' },
+      { label: 'Profile', route: 'profile', icon: '/images/user-profile.png' },
       { label: 'News', route: 'news', icon: 'images/news.png' },
     ];
 
-    // Add the "Post" navigation item only if the user is a teacher.
     if (this.role === 'teacher') {
-      navItems.push({ label: 'Post', route: 'post', icon: '/images/post.png' });
+      navItems.push({ label: 'Post', route: 'post', icon: '/images/book-plus.png' });
     }
 
     return navItems;

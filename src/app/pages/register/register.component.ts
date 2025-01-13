@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import axios from 'axios';
 
 @Component({
@@ -23,6 +24,8 @@ export class RegisterComponent {
 
   // GraphQL endpoint
   private graphqlUrl = 'http://localhost:9103/graphql';
+
+  constructor(private router: Router) {} // Inject Angular Router
 
   // Method to handle form submission
   async onSubmit() {
@@ -58,10 +61,13 @@ export class RegisterComponent {
       });
 
       console.log('Registration successful:', response.data);
-      alert('Registration successful!');
-    } catch (error) {
+      alert('Registration successful! Redirecting to login page...');
 
-      console.log(error);
+      // Redirect to login page
+      this.router.navigate(['/login']);
+    } catch (error) {
+      console.error('Error during registration:', error);
+      alert('Registration failed. Please try again.');
     }
   }
 }

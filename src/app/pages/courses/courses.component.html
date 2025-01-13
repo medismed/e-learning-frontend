@@ -1,37 +1,41 @@
-<div *ngIf="(courses$ | async) as courses; else loading" class="course-list">
-  <div *ngIf="courses.length > 0; else noCourses">
-    <div *ngFor="let course of courses" class="course-item">
-      <!-- Left: Teacher Details -->
-      <div class="teacher-details">
-        <!-- <img src="https://emsicommunity.com/assets/tmp/explore-resources.svg" alt="Teacher Icon" class="teacher-icon" /> -->
-        <!-- <span class="teacher-name">{{ course.teacherlastname }}</span> -->
-        <img src="https://emsicommunity.com/assets/tmp/explore-resources.svg" alt="">
-        <small> <small style="color:rgb(255, 255, 255)"><b>published by : {{course.teacherlastname}}</b></small></small>
-      </div>
+<div class="course-container">
+  <div *ngIf="(courses$ | async) as courses; else loading" class="course-list">
+    <div *ngIf="courses.length > 0; else noCourses">
+      <div *ngFor="let course of courses" class="course-item">
+        <!-- Left: Teacher Details -->
+        <div class="teacher-details">
+          <img src="https://emsicommunity.com/assets/tmp/explore-resources.svg" alt="" />
+        </div>
 
-      <!-- Middle: Course Details -->
-      <div class="course-info">
-        <h3>{{ course.name }} </h3>
-        <p>{{ course.description }}</p>
-        
-      </div>
+        <!-- Middle: Course Details -->
+        <div class="course-info">
+          <h3>{{ course.name }}  
+          
+          </h3>
+          <p>{{ course.description }} 
+            <br>
+            <sub style="color: #a2bd8c;">
+              published by : {{ course.teacherlastname }}
+              </sub>
+          </p>
+    
+        </div>
 
-      <!-- Right: Download Icon -->
-      <div class="course-actions">
-        <button class="download-btn">
+        <!-- Right: Download Icon -->
+        <div class="course-actions">
           <button class="download-btn" (click)="downloadFile(course.link)">
             <img src="images/download.png" alt="Download Icon" />
           </button>
-        </button>
+        </div>
       </div>
     </div>
   </div>
+
+  <ng-template #loading>
+    <p>Loading courses...</p>
+  </ng-template>
+
+  <ng-template #noCourses>
+    <p>No courses available.</p>
+  </ng-template>
 </div>
-
-<ng-template #loading>
-  <p>Loading courses...</p>
-</ng-template>
-
-<ng-template #noCourses>
-  <p>No courses available.</p>
-</ng-template> 

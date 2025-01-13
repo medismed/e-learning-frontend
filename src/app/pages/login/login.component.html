@@ -7,111 +7,62 @@
     <link rel="stylesheet" href="login.component.css" />
   </head>
   <body>
-    <div class="login-container" style="width: 300px;" >
-      <h1>Login</h1>
-      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-        <!-- Email Field -->
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            class="form-control"
-            [(ngModel)]="email"
-            required
-            #emailInput="ngModel"
-          />
-          <div *ngIf="emailInput.invalid && emailInput.touched" class="error">
-            Email is required.
+    <div class="container">
+      <div class="image-section">
+        <img
+          src="https://emsicommunity.com/assets/tmp/explore-groups.svg"
+          alt="Login Illustration"
+        />
+      </div>
+      <div class="login-container">
+        <h1>Login</h1>
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+          <!-- Email Field -->
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              [(ngModel)]="email"
+              required
+              #emailInput="ngModel"
+              placeholder="Enter your email"
+            />
+            <div *ngIf="emailInput.invalid && emailInput.touched" class="error">
+              Email is required.
+            </div>
           </div>
-        </div>
 
-        <!-- Password Field -->
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            class="form-control"
-            [(ngModel)]="password"
-            required
-            #passwordInput="ngModel"
-          />
-          <div
-            *ngIf="passwordInput.invalid && passwordInput.touched"
-            class="error"
-          >
-            Password is required.
+          <!-- Password Field -->
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              [(ngModel)]="password"
+              required
+              #passwordInput="ngModel"
+              placeholder="Enter your password"
+            />
+            <div
+              *ngIf="passwordInput.invalid && passwordInput.touched"
+              class="error"
+            >
+              Password is required.
+            </div>
           </div>
-        </div>
-        
-        <!-- Submit Button -->
-        <button type="submit" class="btn" [disabled]="loginForm.invalid">
-          Login
-        </button>
-      </form>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn" [disabled]="loginForm.invalid">
+            Login
+          </button>
+        </form>
+        <a href="/register" class="register-link">Don't have an account? Register</a>
+      </div>
     </div>
-
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-
-      .login-container {
-        background: white;
-        padding: 2rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 400px;
-      }
-
-      .form-group {
-        margin-bottom: 1rem;
-      }
-
-      label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: bold;
-      }
-
-      .form-control {
-        width: 100%;
-        padding: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
-
-      .btn {
-        background-color: #007bff;
-        color: white;
-        padding: 0.5rem 1rem;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        width: 100%;
-      }
-
-      .btn:disabled {
-        background-color: #ccc;
-        cursor: not-allowed;
-      }
-
-      .error {
-        color: red;
-        font-size: 0.875rem;
-        margin-top: 0.25rem;
-      }
-    </style>
   </body>
 </html>
